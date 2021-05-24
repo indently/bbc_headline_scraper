@@ -20,7 +20,7 @@ def bbc_news_scraper(keyword):
 
     # Finds all the headers in BBC Home
     for h in soup.findAll('h3', class_='gs-c-promo-heading__title'):
-        news_title = h.contents[0].lower()
+        news_title = h.contents[0]
 
         if news_title not in news_list:
             if 'bbc' not in news_title:
@@ -32,7 +32,7 @@ def bbc_news_scraper(keyword):
     # Goes through the list and searches for the keyword
     for i, title in enumerate(news_list):
         text = ''
-        if keyword.lower() in title:
+        if keyword.lower() in title.lower():
             text = ' <------------ KEYWORD'
             no_of_news += 1
             keyword_list.append(title)
@@ -45,4 +45,4 @@ def bbc_news_scraper(keyword):
         print(i + 1, ':', title)
 
 
-bbc_news_scraper('covid')
+bbc_news_scraper('India')
